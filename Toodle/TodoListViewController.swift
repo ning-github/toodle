@@ -9,6 +9,7 @@
 import UIKit
 
 class TodoListViewController: UITableViewController {
+    let defaults = UserDefaults.standard
     
     var itemArray = [
         "Go to Pinkberry",
@@ -19,6 +20,10 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if let items = defaults.stringArray(forKey: "ItemArray") {
+            itemArray = items
+        }
     }
     
     //MARK - tableview datasource methods
@@ -39,8 +44,6 @@ class TodoListViewController: UITableViewController {
     //MARK - tableview delegate method
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("\(indexPath.row): \(itemArray[indexPath.row])")
         
         if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
             tableView.cellForRow(at: indexPath)?.accessoryType = .none
@@ -68,6 +71,8 @@ class TodoListViewController: UITableViewController {
             
             // what happens once the user clicks the Add Item button on the alert modal
             self.itemArray.append(textField.text!)
+            
+            self.defaults.set(self.itemArray, forKey: "ItemArray")
             
             self.tableView.reloadData()
         }
