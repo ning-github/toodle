@@ -10,7 +10,7 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
     
-    let itemArray = [
+    var itemArray = [
         "Go to Pinkberry",
         "Buy frozen yogurt",
         "Eat frozen yogurt"
@@ -51,5 +51,36 @@ class TodoListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
+    
+    // MARK - add new items
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        var textField = UITextField()
+        
+        // this is modal that is presented
+        let alert = UIAlertController(title: "Add New Item",
+                                      message: "",
+                                      preferredStyle: .alert)
+        
+        // this is the action to be on the modal
+        let action = UIAlertAction(title: "Add Item", style: .default) {
+            (action) in
+            
+            // what happens once the user clicks the Add Item button on the alert modal
+            self.itemArray.append(textField.text!)
+            
+            self.tableView.reloadData()
+        }
+        
+        alert.addTextField {
+            (alertTextField) in
+            alertTextField.placeholder = "New item"
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
