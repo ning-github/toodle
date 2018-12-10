@@ -9,12 +9,14 @@
 import UIKit
 
 class TodoListViewController: UITableViewController {
-    let defaults = UserDefaults.standard
     
     var itemArray = [Item]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        
         // Do any additional setup after loading the view, typically from a nib.
         
         let item1 = Item("Buy eggs")
@@ -24,10 +26,6 @@ class TodoListViewController: UITableViewController {
         itemArray.append(item1)
         itemArray.append(item2)
         itemArray.append(item3)
-        
-        if let items = defaults.array(forKey: "ItemArray") as? [Item] {
-            itemArray = items
-        }
     }
     
     //MARK - tableview datasource methods
