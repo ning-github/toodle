@@ -11,17 +11,21 @@ import UIKit
 class TodoListViewController: UITableViewController {
     let defaults = UserDefaults.standard
     
-    var itemArray = [
-        "Go to Pinkberry",
-        "Buy frozen yogurt",
-        "Eat frozen yogurt"
-    ]
+    var itemArray = [Item]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        if let items = defaults.stringArray(forKey: "ItemArray") {
+        let item1 = Item("Buy eggs")
+        let item2 = Item("Buy more eggs")
+        let item3 = Item("Buy eggs again")
+        
+        itemArray.append(item1)
+        itemArray.append(item2)
+        itemArray.append(item3)
+        
+        if let items = defaults.array(forKey: "ItemArray") as? [Item] {
             itemArray = items
         }
     }
@@ -32,7 +36,9 @@ class TodoListViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoItemCell", for: indexPath)
         
-        cell.textLabel?.text = itemArray[indexPath.row]
+        cell.textLabel?.text = itemArray[indexPath.row].title
+        
+        cell.accessoryType = itemArray[indexPath.row].done ? .checkmark : .none
         
         return cell
     }
@@ -45,11 +51,9 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        }
+        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+
+        tableView.reloadData()
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -70,7 +74,7 @@ class TodoListViewController: UITableViewController {
             (action) in
             
             // what happens once the user clicks the Add Item button on the alert modal
-            self.itemArray.append(textField.text!)
+            self.itemArray.append(Item(textField.text!))
             
             self.defaults.set(self.itemArray, forKey: "ItemArray")
             
