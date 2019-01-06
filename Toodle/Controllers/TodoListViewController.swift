@@ -11,12 +11,14 @@ import CoreData
 
 class TodoListViewController: UITableViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var itemArray = [Item]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchBar.delegate = self
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     
         loadItems()
@@ -110,5 +112,27 @@ class TodoListViewController: UITableViewController {
         }
     }
     
+
+}
+
+extension TodoListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        
+        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+        
+        let searchRequest : NSFetchRequest<Item> = Item.fetchRequest()
+        searchRequest.predicate = predicate
+        searchRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            itemArray = try context.fetch(searchRequest)
+        } catch {
+            print("Error searching for \(searchBar.text!): \(error)")
+        }
+        
+        tableView.reloadData()
+    }
 }
 
