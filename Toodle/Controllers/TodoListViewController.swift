@@ -103,10 +103,9 @@ class TodoListViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func loadItems() {
+    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
         do {
-            let itemRequest : NSFetchRequest<Item> = Item.fetchRequest()
-            itemArray = try context.fetch(itemRequest)
+            itemArray = try context.fetch(request)
         } catch {
             print("Error reading existing to do items: \(error)")
         }
@@ -126,13 +125,7 @@ extension TodoListViewController: UISearchBarDelegate {
         searchRequest.predicate = predicate
         searchRequest.sortDescriptors = [sortDescriptor]
         
-        do {
-            itemArray = try context.fetch(searchRequest)
-        } catch {
-            print("Error searching for \(searchBar.text!): \(error)")
-        }
-        
-        tableView.reloadData()
+        loadItems(with: searchRequest)
     }
 }
 
