@@ -12,7 +12,6 @@
 		3B2A2A7521BC640000DE4B4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2A2A7321BC640000DE4B4B /* Main.storyboard */; };
 		3B2A2A7721BC640400DE4B4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2A2A7621BC640400DE4B4B /* Assets.xcassets */; };
 		3B2A2A7A21BC640400DE4B4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2A2A7821BC640400DE4B4B /* LaunchScreen.storyboard */; };
-		3B2A2A8621BD98D600DE4B4B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2A2A8521BD98D600DE4B4B /* Item.swift */; };
 		3B2A2A8921E19DC000DE4B4B /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B2A2A8721E19DC000DE4B4B /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +23,6 @@
 		3B2A2A7621BC640400DE4B4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B2A2A7921BC640400DE4B4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B2A2A7B21BC640400DE4B4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B2A2A8521BD98D600DE4B4B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3B2A2A8821E19DC000DE4B4B /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				3B2A2A8721E19DC000DE4B4B /* DataModel.xcdatamodeld */,
-				3B2A2A8521BD98D600DE4B4B /* Item.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,7 +172,6 @@
 			files = (
 				3B2A2A7221BC640000DE4B4B /* TodoListViewController.swift in Sources */,
 				3B2A2A8921E19DC000DE4B4B /* DataModel.xcdatamodeld in Sources */,
-				3B2A2A8621BD98D600DE4B4B /* Item.swift in Sources */,
 				3B2A2A7021BC640000DE4B4B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
