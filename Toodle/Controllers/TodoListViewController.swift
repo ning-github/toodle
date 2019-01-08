@@ -109,6 +109,8 @@ class TodoListViewController: UITableViewController {
         } catch {
             print("Error reading existing to do items: \(error)")
         }
+        
+        tableView.reloadData()
     }
     
 
@@ -126,6 +128,16 @@ extension TodoListViewController: UISearchBarDelegate {
         searchRequest.sortDescriptors = [sortDescriptor]
         
         loadItems(with: searchRequest)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadItems()
+
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
     }
 }
 
