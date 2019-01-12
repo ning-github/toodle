@@ -42,6 +42,8 @@ class CategoryViewController: UITableViewController {
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
         
+        print("add button pressed")
+        
         // modal that is presented
         let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
         
@@ -66,6 +68,8 @@ class CategoryViewController: UITableViewController {
         
         // attach action to modal
         alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     func saveCategories() {
