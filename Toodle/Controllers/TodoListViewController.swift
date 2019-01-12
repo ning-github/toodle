@@ -19,7 +19,6 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     
         loadItems()
     }
