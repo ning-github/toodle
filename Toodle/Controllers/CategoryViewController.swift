@@ -36,13 +36,27 @@ class CategoryViewController: UITableViewController {
         return categories.count
     }
     
+    // MARK: - TableView Delegate methods
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // segue to its own todo item list
+        performSegue(withIdentifier: "goToItems", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! TodoListViewController
+        // if segue.identifier == "goToItems"
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCategory = categories[indexPath.row]
+        }
+    }
+    
     // MARK: - Data Manipulation methods
     
     // MARK: - Add New Categories
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
-        
-        print("add button pressed")
         
         // modal that is presented
         let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
@@ -92,9 +106,4 @@ class CategoryViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    // MARK: - TableView Delegate methods
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // segue to its own todo item list
-    }
 }
