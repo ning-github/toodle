@@ -134,6 +134,7 @@
 				TargetAttributes = {
 					3B2A2A6B21BC640000DE4B4B = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -329,7 +330,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ningco.Toodle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -347,7 +348,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ningco.Toodle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
