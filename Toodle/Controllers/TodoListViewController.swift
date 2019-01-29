@@ -139,7 +139,7 @@ extension TodoListViewController: UISearchBarDelegate {
         searchRequest.predicate = predicate
         searchRequest.sortDescriptors = [sortDescriptor]
         
-        loadItems(with: searchRequest)
+        loadItems(with: searchRequest, predicate: predicate)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
