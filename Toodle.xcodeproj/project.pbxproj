@@ -13,6 +13,7 @@
 		3B2A2A7721BC640400DE4B4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2A2A7621BC640400DE4B4B /* Assets.xcassets */; };
 		3B2A2A7A21BC640400DE4B4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2A2A7821BC640400DE4B4B /* LaunchScreen.storyboard */; };
 		3B2A2A8921E19DC000DE4B4B /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B2A2A8721E19DC000DE4B4B /* DataModel.xcdatamodeld */; };
+		3B2A2AAC21E82FEE00DE4B4B /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2A2AAB21E82FEE00DE4B4B /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3B2A2A7921BC640400DE4B4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B2A2A7B21BC640400DE4B4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B2A2A8821E19DC000DE4B4B /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		3B2A2AAB21E82FEE00DE4B4B /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				3B2A2A7121BC640000DE4B4B /* TodoListViewController.swift */,
+				3B2A2AAB21E82FEE00DE4B4B /* CategoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -131,6 +134,7 @@
 				TargetAttributes = {
 					3B2A2A6B21BC640000DE4B4B = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -170,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B2A2AAC21E82FEE00DE4B4B /* CategoryViewController.swift in Sources */,
 				3B2A2A7221BC640000DE4B4B /* TodoListViewController.swift in Sources */,
 				3B2A2A8921E19DC000DE4B4B /* DataModel.xcdatamodeld in Sources */,
 				3B2A2A7021BC640000DE4B4B /* AppDelegate.swift in Sources */,
@@ -325,7 +330,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ningco.Toodle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -343,7 +348,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ningco.Toodle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
