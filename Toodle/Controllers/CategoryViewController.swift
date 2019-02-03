@@ -20,6 +20,8 @@ class CategoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(Date().timeIntervalSince1970)
+        
         loadCategories()
     }
     
