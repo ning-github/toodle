@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class CategoryViewController: UITableViewController {
+class CategoryViewController: SwipeTableViewController {
     
     // local state
     var categories: Results<Category>?
@@ -28,7 +28,7 @@ class CategoryViewController: UITableViewController {
     // MARK: - TableView Datasource methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         cell.textLabel?.text = categories?[indexPath.row].name
         
@@ -72,6 +72,19 @@ class CategoryViewController: UITableViewController {
         categories = realm.objects(Category.self)
         
         tableView.reloadData()
+    }
+    
+    // MARK: - Delete data from swipe
+    override func updateModel(at: IndexPath) {
+        if let toDelete = categories?[at.row] {
+            do {
+                try realm.write {
+                    realm.delete(toDelete)
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
     
     // MARK: - Add New Categories

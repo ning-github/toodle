@@ -7,5 +7,6 @@ target 'Toodle' do
 
   # Pods for Toodle
   pod 'RealmSwift'
+  pod 'SwipeCellKit'
 
 end
