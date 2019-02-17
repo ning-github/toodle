@@ -29,6 +29,12 @@ class TodoListViewController: SwipeTableViewController {
         tableView.separatorStyle = .none
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let colorHex = selectedCategory?.color {
+            navigationController?.navigationBar.barTintColor = UIColor(hexString: colorHex)
+        }
+    }
+    
     //MARK - tableview datasource methods
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
