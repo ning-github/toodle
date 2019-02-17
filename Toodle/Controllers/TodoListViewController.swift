@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class TodoListViewController: SwipeTableViewController {
     
@@ -24,6 +25,8 @@ class TodoListViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        
+        tableView.separatorStyle = .none
     }
     
     //MARK - tableview datasource methods
@@ -32,9 +35,17 @@ class TodoListViewController: SwipeTableViewController {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
+        
         if let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = todoItems?[indexPath.row].title
             cell.accessoryType = item.done ? .checkmark : .none
+            
+            if let cellColor = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: CGFloat(indexPath.row)/CGFloat(todoItems!.count)) {
+                
+                cell.backgroundColor = cellColor
+                cell.textLabel?.textColor = ContrastColorOf(cellColor, returnFlat: true)
+            }
+            
         } else {
             cell.textLabel?.text = "No items added"
         }
