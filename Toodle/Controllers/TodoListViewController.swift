@@ -38,6 +38,7 @@ class TodoListViewController: SwipeTableViewController {
             }
             
             navBar.barTintColor = UIColor(hexString: colorHex)
+            searchBar.barTintColor = UIColor(hexString: colorHex)
         }
     }
     
