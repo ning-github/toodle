@@ -31,7 +31,11 @@ class TodoListViewController: SwipeTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if let colorHex = selectedCategory?.color {
-            navigationController?.navigationBar.barTintColor = UIColor(hexString: colorHex)
+            guard let navBar = navigationController?.navigationBar else {
+                fatalError("Navigation controller does not exist")
+            }
+            
+            navBar.barTintColor = UIColor(hexString: colorHex)
         }
     }
     
