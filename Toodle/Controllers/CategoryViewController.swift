@@ -32,16 +32,20 @@ class CategoryViewController: SwipeTableViewController {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        cell.textLabel?.text = categories?[indexPath.row].name
-        let cellColor = UIColor(hexString: categories?[indexPath.row].color ?? "1D9BF6")
-        cell.backgroundColor = cellColor
-        cell.textLabel?.textColor = ContrastColorOf(cellColor!, returnFlat: true)
+        if let category = categories?[indexPath.row] {
+            cell.textLabel?.text = category.name
+            
+            guard let categoryColor = UIColor(hexString: category.color) else {fatalError()}
+            
+            cell.backgroundColor = categoryColor
+            cell.textLabel?.textColor = ContrastColorOf(categoryColor, returnFlat: true)
+        }
         
         return cell
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories?.count ?? 0
+        return categories?.count ?? 1
     }
     
     // MARK: - TableView Delegate methods
@@ -74,7 +78,7 @@ class CategoryViewController: SwipeTableViewController {
     }
     
     func loadCategories() {
-        categories = realm.objects(Category.self)
+        categories = realm.objects(Category.self).sorted(byKeyPath: "createdAt", ascending: true)
         
         tableView.reloadData()
     }
@@ -106,6 +110,7 @@ class CategoryViewController: SwipeTableViewController {
             let newCategory = Category()
             newCategory.name = textField.text!
             newCategory.color = UIColor.randomFlat.hexValue()
+            newCategory.createdAt = Date()
         
             self.save(category: newCategory)
         }
