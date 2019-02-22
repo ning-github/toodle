@@ -32,13 +32,21 @@ class TodoListViewController: SwipeTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let colorHex = selectedCategory?.color {
             title = selectedCategory!.name
-            
+
             guard let navBar = navigationController?.navigationBar else {
                 fatalError("Navigation controller does not exist")
             }
-            
-            navBar.barTintColor = UIColor(hexString: colorHex)
-            searchBar.barTintColor = UIColor(hexString: colorHex)
+
+            if let navBarColor = UIColor(hexString: colorHex) {
+                navBar.barTintColor = navBarColor
+                searchBar.barTintColor = navBarColor
+
+                let contrastColor = ContrastColorOf(navBarColor, returnFlat: true)
+                navBar.tintColor = contrastColor
+
+                navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: contrastColor]
+            }
+
         }
     }
     
