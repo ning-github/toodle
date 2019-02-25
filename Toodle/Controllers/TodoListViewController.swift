@@ -54,6 +54,16 @@ class TodoListViewController: SwipeTableViewController {
         navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: contrastColor]
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        guard let originalColor = UIColor(hexString: "1D9BF6") else {
+            fatalError("Failed to define originalColor")
+        }
+        
+        navigationController?.navigationBar.barTintColor = originalColor;
+        navigationController?.navigationBar.tintColor = FlatWhite()
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: FlatWhite()]
+    }
+    
     //MARK - tableview datasource methods
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
