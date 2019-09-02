@@ -88,6 +88,8 @@ class CategoryViewController: SwipeTableViewController {
         if let toDelete = categories?[at.row] {
             do {
                 try realm.write {
+                    // make sure to delete child items as well
+                    realm.delete(toDelete.items)
                     realm.delete(toDelete)
                 }
             } catch {
